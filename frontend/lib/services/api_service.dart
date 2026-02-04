@@ -5,7 +5,7 @@ import '../models/obat_model.dart';
 
 class ApiService {
  
-  static const String baseUrl = "http:// 192.168.56.1:8000/api";
+  static const String baseUrl = "http://192.168.56.1:8000/api";
 
   // --- 1. OTENTIKASI ---
 
