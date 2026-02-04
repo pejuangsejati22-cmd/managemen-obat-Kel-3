@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../models/obat_model.dart';
 
 class ApiService {
-  // Gunakan 'static const' agar nilai IP tidak berubah secara tidak sengaja
+ 
   static const String baseUrl = "http://localhost:8000/api";
 
   // --- 1. OTENTIKASI ---
@@ -18,7 +18,7 @@ class ApiService {
           )
           .timeout(
             const Duration(seconds: 10),
-          ); // Menghindari 'infinite loading'
+          ); 
 
       var data = jsonDecode(response.body);
 
@@ -69,7 +69,7 @@ class ApiService {
     } catch (e) {
       throw Exception(
         "Kesalahan Koneksi: $e",
-      ); // Membantu debug 'Failed to fetch'
+      ); 
     }
   }
 
