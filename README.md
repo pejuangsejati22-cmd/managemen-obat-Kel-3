@@ -4,7 +4,7 @@ Aplikasi berbasis Mobile (Flutter) dan Web API (Laravel) untuk memantau stok oba
 
 ## 📱 Tampilan Aplikasi (Screenshots)
 
-Berikut adalah antarmuka aplikasi Motor Manager:
+Berikut adalah antarmuka aplikasi Data Obat Manager:
 
 | Login Page | Register Page |
 |:----------:|:-------------:|
@@ -14,7 +14,7 @@ Berikut adalah antarmuka aplikasi Motor Manager:
 | Dashboard List | Input & Edit Form |
 |:--------------:|:-----------------:|
 | ![Dashboard](screenshots/dashboard.jpeg) | ![Form Input](screenshots/form.jpeg) |
-| **Daftar Motor & Stok** | **Form Tambah/Edit Data** |
+| **Daftar Obat & Stok** | **Form Tambah/Edit Data** |
 
 ---
 
@@ -121,7 +121,7 @@ Agar aplikasi dapat berjalan lancar antara HP Android dan Laptop/Server, ikuti l
     ```
 
 **3. Tampilan Overflow (Garis Kuning Hitam)?**
-* Masalah ini terjadi jika nama motor terlalu panjang atau layar HP sempit. Solusinya sudah diterapkan menggunakan widget `Wrap` pada badge harga dan stok.
+* Masalah ini terjadi jika nama Obat terlalu panjang atau layar HP sempit. Solusinya sudah diterapkan menggunakan widget `Wrap` pada badge harga dan stok.
 
 ---
 
