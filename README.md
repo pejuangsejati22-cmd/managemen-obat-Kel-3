@@ -13,7 +13,7 @@ Berikut adalah antarmuka aplikasi Motor Manager:
 
 | Dashboard List | Input & Edit Form |
 |:--------------:|:-----------------:|
-| ![Dashboard](screenshots/dashboard.png) | ![Form Input](screenshots/form.jpeg) |
+| ![Dashboard](screenshots/dashboard.jpeg) | ![Form Input](screenshots/form.jpeg) |
 | **Daftar Motor & Stok** | **Form Tambah/Edit Data** |
 
 ---

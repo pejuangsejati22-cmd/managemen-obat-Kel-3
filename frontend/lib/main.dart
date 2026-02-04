@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// WAJIB: Tambahkan import shared_preferences agar tidak merah
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/login_page.dart';
 import 'screens/home_page.dart';
@@ -14,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Manajemen Motor',
+      title: 'Manajemen Data Obat',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
@@ -92,7 +91,7 @@ class _CheckAuthState extends State<CheckAuth> {
             ),
             const SizedBox(height: 24),
             const Text(
-              "Motor Manager",
+              "Data Obat Manager",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,

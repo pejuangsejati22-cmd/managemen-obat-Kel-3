@@ -111,7 +111,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Mulai kelola motor Anda hari ini",
+                        "Mulai kelola Obat Anda hari ini",
                         style: TextStyle(
                           fontSize: 16,
                           color: Colors.white.withOpacity(0.9),
