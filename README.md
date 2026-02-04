@@ -1,4 +1,4 @@
-# 🏍️ Motor Manager App
+# 🏍️ Data Obat Manager App
 
 Aplikasi berbasis Mobile (Flutter) dan Web API (Laravel) untuk memantau stok obat, mengelola harga, serta inventarisasi data medis secara *real-time*.
 
