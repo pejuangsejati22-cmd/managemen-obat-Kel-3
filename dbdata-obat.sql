@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Feb 2026 pada 09.00
+-- Waktu pembuatan: 04 Feb 2026 pada 13.38
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -113,7 +113,8 @@ CREATE TABLE `obats` (
 --
 
 INSERT INTO `obats` (`idobat`, `nama`, `stok`, `harga`, `created_at`, `updated_at`) VALUES
-('001', 'Paracetamol', 10, 15000.00, '2026-02-04 07:24:10', '2026-02-04 07:24:10');
+('001', 'Paracetamol', 10, 15000.00, '2026-02-04 07:24:10', '2026-02-04 07:24:10'),
+('002', 'Paramex', 5, 8000.00, '2026-02-04 12:38:05', '2026-02-04 12:38:05');
 
 -- --------------------------------------------------------
 
@@ -172,7 +173,9 @@ INSERT INTO `personal_access_tokens` (`id`, `tokenable_type`, `tokenable_id`, `n
 (4, 'App\\Models\\User', 1, 'api-token', '2d1fdb0abc62640591219944fd121a4721ec5118aa49701cdaa968332a762270', '[\"*\"]', NULL, NULL, '2026-02-04 04:33:45', '2026-02-04 04:33:45'),
 (5, 'App\\Models\\User', 1, 'api-token', '0138732402ad4596bcb543b5201030883842214bb4464ecda67f9eda8373859e', '[\"*\"]', NULL, NULL, '2026-02-04 04:42:46', '2026-02-04 04:42:46'),
 (6, 'App\\Models\\User', 2, 'api-token', '81c9299ec0b493ccdc6d57a6371d586400df3891696e2573cffeb5d1e2aefd80', '[\"*\"]', NULL, NULL, '2026-02-04 07:23:51', '2026-02-04 07:23:51'),
-(7, 'App\\Models\\User', 1, 'api-token', 'f65c11651be4c68892c5da9160a6f99b24233d6b3c4816eb123658259b98eb22', '[\"*\"]', NULL, NULL, '2026-02-04 07:30:05', '2026-02-04 07:30:05');
+(7, 'App\\Models\\User', 1, 'api-token', 'f65c11651be4c68892c5da9160a6f99b24233d6b3c4816eb123658259b98eb22', '[\"*\"]', NULL, NULL, '2026-02-04 07:30:05', '2026-02-04 07:30:05'),
+(8, 'App\\Models\\User', 1, 'api-token', 'd5082b10a6c594d7785ed85abf1cb71ba83c839bc2748fd81d8307dee0498001', '[\"*\"]', NULL, NULL, '2026-02-04 12:25:50', '2026-02-04 12:25:50'),
+(9, 'App\\Models\\User', 1, 'api-token', '5c0691d6b680bcacbdb85dd688eaae8d22eb994bcc4f4d2063006b65e22b9b78', '[\"*\"]', NULL, NULL, '2026-02-04 12:37:49', '2026-02-04 12:37:49');
 
 -- --------------------------------------------------------
 
@@ -280,7 +283,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
