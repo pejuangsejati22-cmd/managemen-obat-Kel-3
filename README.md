@@ -86,7 +86,7 @@ Agar aplikasi dapat berjalan lancar antara HP Android dan Laptop/Server, ikuti l
 
     ```dart
     class ApiService {
-      static const String baseUrl = "http://192.168.102.239:8000/api";
+      static const String baseUrl = "http://Localhost:8000/api";
       ...
     }
     ```
