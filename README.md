@@ -1,10 +1,10 @@
-# 🏍️ Data Obat Manager App
+# 💊 Management Obat App
 
 Aplikasi berbasis Mobile (Flutter) dan Web API (Laravel) untuk memantau stok obat, mengelola harga, serta inventarisasi data medis secara *real-time*.
 
 ## 📱 Tampilan Aplikasi (Screenshots)
 
-Berikut adalah antarmuka aplikasi Data Obat Manager:
+Berikut adalah antarmuka aplikasi Management Obat:
 
 | Login Page | Register Page |
 |:----------:|:-------------:|
@@ -125,4 +125,4 @@ Agar aplikasi dapat berjalan lancar antara HP Android dan Laptop/Server, ikuti l
 
 ---
 
-Made with ❤️ by Pejuangsejati22
+Made with ❤️ by Kelompok 3

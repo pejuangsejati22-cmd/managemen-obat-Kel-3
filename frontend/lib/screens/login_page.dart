@@ -101,8 +101,8 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center, //
-                crossAxisAlignment: CrossAxisAlignment.center, /
+                mainAxisAlignment: MainAxisAlignment.center, 
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                     padding: const EdgeInsets.all(15),
