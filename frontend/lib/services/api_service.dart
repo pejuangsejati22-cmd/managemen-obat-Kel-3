@@ -1,53 +1,59 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/obat_model.dart';
 
 class ApiService {
- 
+
   static const String baseUrl = "http://localhost:8000/api";
+
+  Future<Map<String, String>> _getHeaders() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString('token') ?? '';
+    return {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Bearer $token',
+    };
+  }
 
   // --- 1. OTENTIKASI ---
 
   Future<Map<String, dynamic>> login(String email, String password) async {
     try {
-      final response = await http
-          .post(
-            Uri.parse("$baseUrl/login"),
-            body: {'email': email, 'password': password},
-          )
-          .timeout(
-            const Duration(seconds: 10),
-          ); 
+      final response = await http.post(
+        Uri.parse("$baseUrl/login"),
+        headers: {'Accept': 'application/json'},
+        body: {'email': email, 'password': password},
+      ).timeout(const Duration(seconds: 10));
 
-      var data = jsonDecode(response.body);
+      final data = jsonDecode(response.body);
 
       if (response.statusCode == 200 && data['status'] == true) {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        await prefs.setString('token', data['data']['token']);
+        final prefs = await SharedPreferences.getInstance();
+        await prefs.setString('token', data['data']['token'].toString());
         await prefs.setBool('isLoggedIn', true);
       }
       return data;
+    } on SocketException {
+      return {'status': false, 'data': 'Tidak ada koneksi internet'};
     } catch (e) {
-      return {'status': false, 'data': 'Kesalahan Koneksi: $e'}; //
+      return {'status': false, 'data': 'Terjadi kesalahan: $e'};
     }
   }
 
-  Future<Map<String, dynamic>> register(
-    String nama,
-    String email,
-    String password,
-  ) async {
+  Future<Map<String, dynamic>> register(String nama, String email, String password) async {
     try {
-      final response = await http
-          .post(
-            Uri.parse("$baseUrl/register"),
-            body: {'nama': nama, 'email': email, 'password': password},
-          )
-          .timeout(const Duration(seconds: 10));
+      final response = await http.post(
+        Uri.parse("$baseUrl/register"),
+        headers: {'Accept': 'application/json'},
+        body: {'nama': nama, 'email': email, 'password': password},
+      ).timeout(const Duration(seconds: 10));
+      
       return jsonDecode(response.body);
     } catch (e) {
-      return {'status': false, 'data': 'Gagal terhubung ke backend: $e'};
+      return {'status': false, 'data': 'Gagal mendaftar: $e'};
     }
   }
 
@@ -55,69 +61,69 @@ class ApiService {
 
   Future<List<Obat>> getObat() async {
     try {
-      final response = await http
-          .get(Uri.parse("$baseUrl/obats"))
-          .timeout(const Duration(seconds: 10));
+      final response = await http.get(
+        Uri.parse("$baseUrl/obats"),
+        headers: await _getHeaders(),
+      ).timeout(const Duration(seconds: 10));
 
       if (response.statusCode == 200) {
-        Map<String, dynamic> body = jsonDecode(response.body);
-        List<dynamic> data = body['data'];
+        final Map<String, dynamic> body = jsonDecode(response.body);
+        final List<dynamic> data = body['data'];
         return data.map((item) => Obat.fromJson(item)).toList();
-      } else {
-        throw Exception("Gagal mengambil data obat");
       }
+      return [];
     } catch (e) {
-      throw Exception(
-        "Kesalahan Koneksi: $e",
-      ); 
+      print("Error fetching data: $e");
+      return [];
     }
   }
 
-  Future<bool> addObat(
-    String id,
-    String nama,
-    String stok,
-    String harga,
-  ) async {
+  Future<bool> addObat(String id, String nama, String stok, String harga) async {
     try {
-      final response = await http
-          .post(
-            Uri.parse("$baseUrl/obats"),
-            body: {'idobat': id, 'nama': nama, 'stok': stok, 'harga': harga},
-          )
-          .timeout(const Duration(seconds: 10));
+      final response = await http.post(
+        Uri.parse("$baseUrl/obats"),
+        headers: await _getHeaders(),
+        body: jsonEncode({
+          'idobat': id,
+          'nama': nama,
+          'stok': stok,
+          'harga': harga,
+        }),
+      ).timeout(const Duration(seconds: 10));
+      
       return response.statusCode == 201 || response.statusCode == 200;
-    } catch (e) {
+    } catch (_) {
       return false;
     }
   }
 
-  Future<bool> updateObat(
-    String id,
-    String nama,
-    String stok,
-    String harga,
-  ) async {
+  Future<bool> updateObat(String id, String nama, String stok, String harga) async {
     try {
-      final response = await http
-          .put(
-            Uri.parse("$baseUrl/obats/$id"),
-            body: {'nama': nama, 'stok': stok, 'harga': harga},
-          )
-          .timeout(const Duration(seconds: 10));
+      final response = await http.put(
+        Uri.parse("$baseUrl/obats/$id"),
+        headers: await _getHeaders(),
+        body: jsonEncode({
+          'nama': nama,
+          'stok': stok,
+          'harga': harga,
+        }),
+      ).timeout(const Duration(seconds: 10));
+      
       return response.statusCode == 200;
-    } catch (e) {
+    } catch (_) {
       return false;
     }
   }
 
   Future<bool> deleteObat(String id) async {
     try {
-      final response = await http
-          .delete(Uri.parse("$baseUrl/obats/$id"))
-          .timeout(const Duration(seconds: 10));
+      final response = await http.delete(
+        Uri.parse("$baseUrl/obats/$id"),
+        headers: await _getHeaders(),
+      ).timeout(const Duration(seconds: 10));
+      
       return response.statusCode == 200;
-    } catch (e) {
+    } catch (_) {
       return false;
     }
   }
