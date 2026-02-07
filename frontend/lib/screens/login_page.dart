@@ -120,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: 20),
                   const Text(
-                    "PharmaTrack",
+                    "pharmatrack APP",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 34,
